@@ -1,11 +1,10 @@
-import express from "express";
-import db from "./src/config/database.js";
+import express, { Express, Request, Response } from 'express';
+import db from "./config/database";
 import cors from "cors";
-import dotenv from "dotenv";
+import 'dotenv/config'
 import bodyParser from "body-parser";
 
-dotenv.config();
-const app = express();
+const app:Express = express();
 
 app.use(cors());
 
@@ -14,15 +13,15 @@ app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
 try{
-  await db.sync();
-  await db.authenticate();
+  db.sync();
+  db.authenticate();
   console.log("Database connected successfully");
 } catch (error) {
   console.error("Database connect failed: ", error);
 }
 
 // simple route
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Wallet Backend Application" });
 });
 

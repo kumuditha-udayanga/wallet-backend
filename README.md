@@ -4,7 +4,7 @@
     ```
     DATABASE_NAME = "wallet"
     ```
-- Update the **configurations** in the `src/config/database.js` file.
+- Update the **configurations** in the `src/config/database.ts` file.
 
 - Install all the dependencies
     ```
