@@ -3,6 +3,7 @@ import db from "./config/database";
 import cors from "cors";
 import 'dotenv/config'
 import bodyParser from "body-parser";
+import ExpenseRoutes from "./routes/expense.routes";
 
 const app:Express = express();
 
@@ -25,6 +26,7 @@ app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Wallet Backend Application" });
 });
 
+app.use('/expense/', ExpenseRoutes);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
